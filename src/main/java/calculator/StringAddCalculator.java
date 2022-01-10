@@ -37,9 +37,17 @@ public class StringAddCalculator {
 	private static int getSum(int sum, String[] tokens) {
 		int length = tokens.length;
 		for (int i = 0; i < length; i++) {
-			sum += Integer.parseInt(tokens[i]);
+			int number = Integer.parseInt(tokens[i]);
+			isItNegative(number);
+			sum += number;
 		}
 		return sum;
+	}
+
+	private static void isItNegative(int number) {
+		if (number < 0) {
+			throw new RuntimeException();
+		}
 	}
 
 	private static boolean isItOneWord(String text) {
