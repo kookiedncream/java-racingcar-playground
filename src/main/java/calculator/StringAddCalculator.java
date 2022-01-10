@@ -1,5 +1,8 @@
 package calculator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringAddCalculator {
 	public static int splitAndSum(String text) {
 
@@ -19,7 +22,16 @@ public class StringAddCalculator {
 			return sum;
 		}
 
+		Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+		if (m.find()) {
+			String customDelimiter = m.group(1);
+			String[] tokens = m.group(2).split(customDelimiter);
+
+			sum = getSum(sum, tokens);
+		}
+
 		return sum;
+
 	}
 
 	private static int getSum(int sum, String[] tokens) {
