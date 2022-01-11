@@ -12,8 +12,11 @@ public class Car {
 	}
 
 	private void judgeName(String name) {
-		if (!isPossibleName(name)) {
-			throw new IllegalArgumentException("이름을 5자 이하로 만들어 주세요.");
+		String[] split = name.split(",");
+		for (int i = 0; i < split.length; i++) {
+			if (!isPossibleName(split[i])) {
+				throw new IllegalArgumentException("이름을 5자 이하로 만들어 주세요.");
+			}
 		}
 	}
 
