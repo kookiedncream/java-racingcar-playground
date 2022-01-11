@@ -7,47 +7,46 @@ public class Game {
 	public static final String NEW_LINE = "\n";
 	public static final String DISTANCE = "-";
 	private final List<Car> members;
+	private StringBuilder simul = new StringBuilder();
 
 	public Game(List<Car> members) {
 		this.members = members;
 	}
 
 	public void proceed(int number) {
+		simul.append("실행 결과")
+				.append(NEW_LINE);
 		for (int i = 0; i < number; i++) {
 			proceedGame();
+			simul.append(NEW_LINE);
 		}
+		System.out.println(simul);
 	}
 
 	private void proceedGame() {
 		Car temp;
-		for (int j = 0; j < members.size(); j++) {
-			temp = members.get(j);
+
+		for (int i = 0; i < members.size(); i++) {
+			temp = members.get(i);
 			move(temp);
-			System.out.println(printAllMembers());
+			makeString(i);
 		}
 	}
 
-	private StringBuilder printAllMembers() {
-		StringBuilder simul = new StringBuilder();
-		makeString(simul);
-		return simul;
+	private void makeString(int i) {
+		Car member;
+
+		member = members.get(i);
+		simul.append(member.getName())
+				.append(" : ");
+
+		inputDistance(member);
 	}
 
-	private void makeString(StringBuilder simul) {
-		simul.append("실행 결과")
-				.append(NEW_LINE);
-		Car member;
-		for (int i = 0; i < members.size(); i++) {
-
-			member = members.get(i);
-			simul.append(member.getName())
-					.append(" : ");
-
-			int number = member.getDistance();
-			for (int j = 0; j < number; j++) {
-				simul.append(DISTANCE);
-			}
-			simul.append(NEW_LINE);
+	private void inputDistance(Car member) {
+		int number = member.getDistance();
+		for (int j = 0; j < number; j++) {
+			simul.append(DISTANCE);
 		}
 		simul.append(NEW_LINE);
 	}
