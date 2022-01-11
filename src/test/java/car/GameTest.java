@@ -1,5 +1,6 @@
 package car;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -9,19 +10,30 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class GameTest {
 
-	@Test
-	void proceedTest() {
-		List<Car> members = new ArrayList<>();
+	List<Car> members;
+	Game game;
+
+	@BeforeEach
+	void init() {
+		members = new ArrayList<>();
 		Car pobi = new Car("pobi");
 		Car clong = new Car("clong");
 
 		members.add(pobi);
 		members.add(clong);
 
-		Game game = new Game(members);
+		game = new Game(members);
+	}
 
+	@Test
+	void proceedTest() {
 		game.proceed(1);
-		int distance = pobi.getDistance();
+		int distance = members.get(0).getDistance();
 		assertThat(distance).isEqualTo(1);
+	}
+
+	@Test
+	void gameEndTest() {
+		List<String> gameEnd = game.isGameEnd();
 	}
 }

@@ -1,5 +1,6 @@
 package car;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -55,5 +56,40 @@ public class Game {
 		if (temp.isMovable(temp.makeRandomNumber())) {
 			temp.move();
 		}
+	}
+
+	public List<String> isGameEnd() {
+
+		List<String> result = new ArrayList<>();
+
+		sortList();
+
+		return getResult(result);
+	}
+
+	private List<String> getResult(List<String> result) {
+
+		result.add(members.get(0).getName());
+		int max = members.get(0).getDistance();
+
+		findMoreWinner(result);
+
+		return result;
+	}
+
+	private void findMoreWinner(List<String> result) {
+		int max = members.get(0).getDistance();
+
+		for (int i = 1; i < members.size(); i++) {
+			Car nextMember = members.get(i);
+			if (max > nextMember.getDistance()) {
+				break;
+			}
+			result.add(nextMember.getName());
+		}
+	}
+
+	private void sortList() {
+		members.sort((a, b) -> b.getDistance() - a.getDistance());
 	}
 }
