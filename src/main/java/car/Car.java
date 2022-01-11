@@ -7,10 +7,14 @@ public class Car {
 	private int distance = 0;
 
 	public Car(String name) {
+		judgeName(name);
+		this.name = name;
+	}
+
+	private void judgeName(String name) {
 		if (!isPossibleName(name)) {
 			throw new IllegalArgumentException("이름을 5자 이하로 만들어 주세요.");
 		}
-		this.name = name;
 	}
 
 	private boolean isPossibleName(String name) {
