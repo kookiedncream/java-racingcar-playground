@@ -42,10 +42,8 @@ public class Car {
 		return this.distance;
 	}
 
-	public void move(int number) {
-		if (number < 4) {
-			return;
-		}
+	public void move() {
+
 		distance++;
 	}
 
@@ -54,5 +52,12 @@ public class Car {
 	 */
 	public void setDistance(int number) {
 		this.distance = number;
+	}
+
+	public void move(int number) {
+		if (number < 4) {
+			return;
+		}
+		distance++;
 	}
 }
