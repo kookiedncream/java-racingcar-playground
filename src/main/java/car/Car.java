@@ -1,7 +1,10 @@
 package car;
 
+import java.util.Random;
+
 public class Car {
 	private final String name;
+	private int distance = 0;
 
 	public Car(String name) {
 		if (!isPossibleName(name)) {
@@ -11,10 +14,7 @@ public class Car {
 	}
 
 	private boolean isPossibleName(String name) {
-		if (validateName(name.length())) {
-			return true;
-		}
-		return false;
+		return validateName(name.length());
 	}
 
 	private boolean validateName(int length) {
@@ -23,5 +23,32 @@ public class Car {
 
 	public String getName() {
 		return this.name;
+	}
+
+	public boolean isMovable(int number) {
+		return number >= 4 && number <= 9;
+	}
+
+	public int makeRandomNumber() {
+		Random random = new Random();
+		return random.nextInt(10);
+	}
+
+	public int getDistance() {
+		return this.distance;
+	}
+
+	public void move(int number) {
+		if (number < 4) {
+			return;
+		}
+		distance++;
+	}
+
+	/**
+	 * 테스트용 함수
+	 */
+	public void setDistance(int number) {
+		this.distance = number;
 	}
 }
