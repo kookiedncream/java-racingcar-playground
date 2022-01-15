@@ -49,4 +49,8 @@ public class Members {
 		}
 		return winners;
 	}
+
+	public String result(int memberNo) {
+		return members.get(memberNo).result();
+	}
 }

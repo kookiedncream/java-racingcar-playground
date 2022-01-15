@@ -8,6 +8,7 @@ public class Cars {
 	public static final String NONE_SPACE = "";
 	public static final String COMMA = ",";
 	public static final int BOUND = 10;
+	public static final String NEW_LINE = "\n";
 	private Members members;
 
 	public Cars(String words) {
@@ -49,5 +50,15 @@ public class Cars {
 
 	protected Members getMembers() {
 		return this.members;
+	}
+
+	public String result() {
+		String temp = "";
+		for (int i = 0; i < members.size(); i++) {
+			temp += members.result(i);
+			temp += NEW_LINE;
+		}
+
+		return temp;
 	}
 }

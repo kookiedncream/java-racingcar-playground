@@ -25,4 +25,14 @@ public class Car {
 	public void move(int randomNo) {
 		this.position = position.move(randomNo);
 	}
+
+	public String result() {
+		String result = "";
+
+		for (int i = 0; i < position.getPosition(); i++) {
+			result += "-";
+		}
+
+		return id.name() + " : " + result;
+	}
 }
