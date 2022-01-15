@@ -1,10 +1,13 @@
 package model;
 
 
+import java.util.Random;
+
 public class Cars {
 	public static final String WHITE_SPACE = " ";
 	public static final String NONE_SPACE = "";
 	public static final String COMMA = ",";
+	public static final int BOUND = 10;
 	private Members members;
 
 	public Cars(String words) {
@@ -26,5 +29,25 @@ public class Cars {
 
 	public int size() {
 		return members.size();
+	}
+
+	public void move() {
+		for (int i = 0; i < members.size(); i++) {
+			members.move(getRandomNo(), i);
+		}
+	}
+
+	protected int getRandomNo() {
+		Random random = new Random();
+		return random.nextInt(BOUND);
+	}
+
+
+	public String winner() {
+		return members.getWinnersName();
+	}
+
+	protected Members getMembers() {
+		return this.members;
 	}
 }
