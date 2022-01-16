@@ -37,7 +37,7 @@ public class Members {
 
 		winners = getWinners(winners, max);
 
-		return winners;
+		return winners + " 가 우승입니다.";
 	}
 
 	private String getWinners(String winners, int max) {
